@@ -1,0 +1,22 @@
+{
+  "name": "caresplit",
+  "version": "1.0.0",
+  "description": "Open source Solana Devnet hospital payment prototype",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "esbuild app.mjs --bundle --outfile=app.js",
+    "check": "node --check app.mjs && node --check payments.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "qrcode": "1.5.4"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

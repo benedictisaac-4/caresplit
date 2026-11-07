@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CareSplit is an open-source hospital payment prototype for sharing a bill with family.">
+<meta name="referrer" content="no-referrer">
+<title>CareSplit | Hospital payments, shared</title>
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<header><div class="bar"><a class="brand" href="./"><span aria-hidden="true">✚</span> CareSplit</a><span id="mode" class="badge">Practice mode</span></div></header>
+<main>
+<section class="intro">
+  <p class="eyebrow">CARESPLIT · SOLANA HACKATHON</p>
+  <h1>One hospital bill.<br><em>More ways to pay.</em></h1>
+  <p>Pay your balance or share a payment link with family. Every contribution goes toward the same bill.</p>
+</section>
+<div class="grid">
+  <section class="card bill" aria-labelledby="bill-title">
+    <div class="row"><p class="eyebrow" id="bill-title">HOSPITAL BILL</p><span id="bill-status" class="badge">Open</span></div>
+    <h2>Northstar Medical Center</h2><p class="muted">Fictional hospital · <span id="invoice-id">Sample bill</span></p>
+    <p class="balance-label">Remaining balance</p>
+    <strong id="balance" class="balance">$300.00</strong>
+    <progress id="progress" value="0" max="30000" aria-label="Bill paid"></progress>
+    <div class="row amounts"><span id="paid">$0.00 contributed</span><span id="total">$300.00 total</span></div>
+    <hr>
+    <details id="explanation"><summary>Understand this sample bill</summary><p>The sample statement has $480 in charges. Insurance covered $180, leaving a $300 patient balance. The balance above goes down as payments are recorded.</p></details>
+    <button id="share" class="secondary" type="button">Copy family payment link</button>
+    <p id="share-status" role="status" class="muted"></p>
+  </section>
+  <section class="card checkout" aria-labelledby="pay-title">
+    <p class="eyebrow">CHECKOUT</p><h2 id="pay-title">Make a contribution</h2>
+    <p id="pay-help" class="muted">Try a payment using simulated funds.</p>
+    <form id="payment">
+      <div class="chips" aria-label="Suggested amounts">
+        <button type="button" data-amount="25">$25</button><button type="button" data-amount="50">$50</button><button type="button" data-amount="100">$100</button><button type="button" id="full">Pay balance</button>
+      </div>
+      <label for="amount">Contribution amount</label>
+      <div class="input-wrap"><span aria-hidden="true">$</span><input id="amount" type="text" inputmode="decimal" value="100.00" maxlength="10" required></div>
+      <button class="primary" id="pay" type="submit" disabled>Record practice payment</button>
+    </form>
+    <div id="wallet" hidden>
+      <canvas id="qr" aria-label="Solana Pay QR code"></canvas>
+      <a id="wallet-link" class="secondary" href="#">Open in wallet</a>
+      <p class="muted">Use a Solana Pay wallet set to Devnet. Scan the QR code or open the payment request on your wallet device.</p>
+    </div>
+    <button id="refresh" class="secondary" type="button" hidden>Check confirmed payments</button>
+    <p id="message" role="status" class="muted"></p>
+  </section>
+</div>
+<div class="grid lower">
+  <section class="card"><p class="eyebrow">BILL ACTIVITY</p><h2>Payment history</h2><ul id="history" class="history"></ul></section>
+  <section class="card" id="hospital"><p class="eyebrow">HOSPITAL DESK</p><h2>Create a demo bill</h2><p class="muted">Enter a fictional bill amount and a receiving wallet you control on Solana Devnet.</p>
+    <form id="create">
+      <label for="recipient">Devnet receiving wallet</label>
+      <input id="recipient" placeholder="Solana public address" required maxlength="44" autocomplete="off">
+      <label for="bill-amount">Total amount</label>
+      <input id="bill-amount" inputmode="decimal" value="300.00" required maxlength="10">
+      <button class="secondary" type="submit">Create Devnet payment link</button>
+    </form>
+    <p id="create-status" role="status" class="muted"></p>
+  </section>
+</div>
+</main>
+<footer><span>CareSplit · Hackathon prototype</span><span>Sample data and Devnet test tokens</span></footer>
+</body>
+</html>
